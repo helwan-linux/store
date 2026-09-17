@@ -1,4 +1,4 @@
-store/
+https://github.com/helwan-linux/store
 📁 store/
 ├── 📄 Makefile
 ├── 📁 data

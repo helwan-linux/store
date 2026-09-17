@@ -6,13 +6,12 @@ pkgdesc="Application store for Helwan Linux"
 arch=('x86_64')
 url="https://github.com/helwan-linux/store"
 license=('GPL3')
-depends=('gtk4' 'libadwaita' 'pacman' 'curl' 'json-c')
+depends=('gtk3' 'pacman' 'curl' 'json-c')
 makedepends=('git' 'make' 'gcc' 'pkgconf')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/helwan-linux/store/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-    # الدخول إلى مجلد المشروع ثم مجلد store حيث يوجد الـ Makefile والمكونات
     cd "store-$pkgver/store"
     make
 }
@@ -23,7 +22,7 @@ package() {
     # تثبيت الملف التنفيذي
     install -Dm755 hel-store "$pkgdir/usr/bin/hel-store"
     
-    # تثبيت ملف سطح المكتب والأيقونات والأصول الخاصة بالمتجر
+    # تثبيت ملف سطح المكتب والأيقونات والأصول
     install -Dm644 data/hel-store.desktop "$pkgdir/usr/share/applications/hel-store.desktop"
     install -Dm644 data/hel-store.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/hel-store.png"
     install -Dm644 data/about-logo.png "$pkgdir/usr/share/rody-store/about-logo.png"

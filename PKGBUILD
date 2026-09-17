@@ -12,17 +12,18 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/helwan-linux/store/archive/
 sha256sums=('SKIP')
 
 build() {
-    cd "store-$pkgver"
+    # الدخول إلى مجلد المشروع ثم مجلد store حيث يوجد الـ Makefile والمكونات
+    cd "store-$pkgver/store"
     make
 }
 
 package() {
-    cd "store-$pkgver"
+    cd "store-$pkgver/store"
     
-    # تثبيت الملف التنفيذي للمتجر
+    # تثبيت الملف التنفيذي
     install -Dm755 hel-store "$pkgdir/usr/bin/hel-store"
     
-    # تثبيت ملف سطح المكتب (Desktop Entry) والأيقونات والملفات التابعة
+    # تثبيت ملف سطح المكتب والأيقونات والأصول الخاصة بالمتجر
     install -Dm644 data/hel-store.desktop "$pkgdir/usr/share/applications/hel-store.desktop"
     install -Dm644 data/hel-store.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/hel-store.png"
     install -Dm644 data/about-logo.png "$pkgdir/usr/share/rody-store/about-logo.png"

@@ -1,0 +1,20 @@
+https://github.com/helwan-linux/store
+📁 store/
+├── 📄 Makefile
+├── 📁 data
+│   ├── 📄 about-logo.png
+│   ├── 📄 hel-store.desktop
+│   ├── 📄 hel-store.png
+│   └── 📄 style.css
+├── 📁 include
+│   ├── 📄 backend_alpm.h
+│   ├── 📄 core.h
+│   ├── 📄 icon_manager.h
+│   └── 📄 ui.h
+└── 📁 src
+    ├── 📄 async_loader.c
+    ├── 📄 backend_alpm.c
+    ├── 📄 icon_manager.c
+    ├── 📄 main.c
+    ├── 📄 ui_about.c
+    └── 📄 ui_window.c

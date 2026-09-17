@@ -2423,6 +2423,20 @@ void ui_window_show(
      * Description column
      * ===================================================== */
 
+    //GtkTreeViewColumn *description_column =
+        //gtk_tree_view_get_column(
+            //GTK_TREE_VIEW(tree_view),
+            //2
+        //);
+
+    //if (description_column) {
+
+        //gtk_tree_view_column_set_expand(
+            //description_column,
+            //TRUE
+        //);
+    //}
+    
     GtkTreeViewColumn *description_column =
         gtk_tree_view_get_column(
             GTK_TREE_VIEW(tree_view),
@@ -2430,10 +2444,16 @@ void ui_window_show(
         );
 
     if (description_column) {
-
-        gtk_tree_view_column_set_expand(
+        // 1. تحويل تحجيم العمود إلى ثابت
+        gtk_tree_view_column_set_sizing(
             description_column,
-            TRUE
+            GTK_TREE_VIEW_COLUMN_FIXED
+        );
+        
+        // 2. إعطاؤه العرض الذي تريده بالبكسل (غير 350 للرقم المناسب لك)
+        gtk_tree_view_column_set_fixed_width(
+            description_column,
+            500
         );
     }
 

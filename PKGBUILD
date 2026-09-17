@@ -1,5 +1,5 @@
 # Maintainer: Saeed Badreldin <saeed@helwanlinux.org>
-pkgname=rody-store
+pkgname=hel-store
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Application store for Helwan Linux"
@@ -25,6 +25,6 @@ package() {
     # تثبيت ملف سطح المكتب والأيقونات والأصول
     install -Dm644 data/hel-store.desktop "$pkgdir/usr/share/applications/hel-store.desktop"
     install -Dm644 data/hel-store.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/hel-store.png"
-    install -Dm644 data/about-logo.png "$pkgdir/usr/share/rody-store/about-logo.png"
-    install -Dm644 data/style.css "$pkgdir/usr/share/rody-store/style.css"
+    install -Dm644 data/about-logo.png "$pkgdir/usr/share/hel-store/about-logo.png"
+    install -Dm644 data/style.css "$pkgdir/usr/share/hel-store/style.css"
 }

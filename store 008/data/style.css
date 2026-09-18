@@ -3,6 +3,7 @@
 window {
     background-color: #2b3e50;
     color: #000000;
+    font-size: 20pt; /* حجم الخط الأساسي للنافذة ويتم توريثه للعناصر */
 }
 
 /* Buttons */
@@ -58,15 +59,18 @@ combobox button {
     background-color: #3f5870;
 }
 
+
 /* Tree View */
 
 treeview {
     background-color: #1f2d3a;
     color: #000000;
+    font-size: 20pt; /* يكبر حجم خط محتوى الأعمدة بالكامل ويورث للخلايا */
 }
 
 treeview.view {
     color: #000000;
+    font-size: 20pt; /* لضمان تطبيق الحجم على العرض الحالي */
 }
 
 treeview.view:selected {
@@ -79,7 +83,9 @@ treeview header button {
     color: #000000;
     font-weight: bold;
     border: 1px solid #4e6d8c;
+    font-size: 20pt; /* لتكبير خط عناوين الأعمدة أيضاً لتتناسق مع المحتوى */
 }
+
 
 /* Progress bar */
 
@@ -102,6 +108,7 @@ progressbar progress {
 #main-title {
     color: #000000;
     font-weight: bold;
+    font-size: 13pt; /* خط أكبر للعناوين الرئيسية إن أردت */
 }
 
 /* Install / Remove buttons */

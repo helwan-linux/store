@@ -2325,6 +2325,24 @@ void ui_window_show(
         1,
         NULL
     );
+    
+    GtkTreeViewColumn *version_column =
+        gtk_tree_view_get_column(
+            GTK_TREE_VIEW(tree_view),
+            1
+        );
+
+    if (version_column) {
+        gtk_tree_view_column_set_sizing(
+            version_column,
+            GTK_TREE_VIEW_COLUMN_FIXED
+        );
+        
+        gtk_tree_view_column_set_fixed_width(
+            version_column,
+            175 // قم بتعديل الرقم بالبكسل حسب العرض الذي تريده
+        );
+    }
 
     gtk_tree_view_insert_column_with_attributes(
         GTK_TREE_VIEW(tree_view),
@@ -2354,6 +2372,7 @@ void ui_window_show(
             4,
             NULL
         );
+
 
     gtk_tree_view_append_column(
         GTK_TREE_VIEW(tree_view),

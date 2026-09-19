@@ -1,0 +1,23 @@
+
+📁 store/
+├── 📄 Makefile
+├── 📁 data
+│   ├── 📄 about-logo.png
+│   ├── 📄 hel-store.desktop
+│   ├── 📄 hel-store.png
+│   └── 📄 style.css
+├── 📄 diagram.txt
+├── 📄 hel-store
+├── 📁 include
+│   ├── 📄 backend_alpm.h
+│   ├── 📄 core.h
+│   ├── 📄 icon_manager.h
+│   └── 📄 ui.h
+└── 📁 src
+    ├── 📄 async_loader.c
+    ├── 📄 backend_alpm.c
+    ├── 📄 icon_manager.c
+    ├── 📄 main.c
+    ├── 📄 tray.c
+    ├── 📄 ui_about.c
+    └── 📄 ui_window.c

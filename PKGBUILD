@@ -6,23 +6,36 @@ pkgdesc="Application store for Helwan Linux"
 arch=('x86_64')
 url="https://github.com/helwan-linux/store"
 license=('GPL3')
-depends=('gtk3' 'pacman' 'curl' 'json-c' 'libayatana-appindicator')
-makedepends=('git' 'make' 'gcc' 'pkgconf')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/helwan-linux/store/archive/refs/tags/v$pkgver.tar.gz")
+
+depends=(
+    'gtk3'
+    'pacman'
+    'curl'
+    'json-c'
+    'libayatana-appindicator'
+)
+
+makedepends=(
+    'make'
+    'gcc'
+    'pkgconf'
+)
+
+source=("https://github.com/helwan-linux/store/archive/refs/heads/main.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-    cd "store-$pkgver/store"
+    cd "$srcdir/store-main/store"
+
     make
 }
 
 package() {
-    cd "store-$pkgver/store"
+    cd "$srcdir/store-main/store"
 
-    # تثبيت الملف التنفيذي
-    install -Dm755 hel-store "$pkgdir/usr/bin/hel-store"
+    install -Dm755 hel-store \
+        "$pkgdir/usr/bin/hel-store"
 
-    # تثبيت ملف سطح المكتب والأيقونات والأصول
     install -Dm644 data/hel-store.desktop \
         "$pkgdir/usr/share/applications/hel-store.desktop"
 
@@ -30,8 +43,9 @@ package() {
         "$pkgdir/usr/share/icons/hicolor/256x256/apps/hel-store.png"
 
     install -Dm644 data/about-logo.png \
-        "$pkgdir/usr/share/hel-store/about-logo.png"
+        "$pkgdir/usr/share/helwan/hel-store/about-logo.png"
 
     install -Dm644 data/style.css \
-        "$pkgdir/usr/share/hel-store/style.css"
+        "$pkgdir/usr/share/helwan/hel-store/style.css"
 }
+

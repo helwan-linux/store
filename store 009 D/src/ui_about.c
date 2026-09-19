@@ -8,7 +8,7 @@ void ui_about_dialog_show(GtkWindow *parent) {
     gtk_window_set_modal(GTK_WINDOW(dialog), TRUE);
 
     gtk_about_dialog_set_program_name(GTK_ABOUT_DIALOG(dialog), "Helwan Software Store");
-    gtk_about_dialog_set_version(GTK_ABOUT_DIALOG(dialog), "5.0");
+    gtk_about_dialog_set_version(GTK_ABOUT_DIALOG(dialog), "1.0");
     gtk_about_dialog_set_comments(GTK_ABOUT_DIALOG(dialog), "Professional Package Center for Helwan Linux");
     gtk_about_dialog_set_copyright(GTK_ABOUT_DIALOG(dialog), "Copyright © 2026 Helwan Linux");
     

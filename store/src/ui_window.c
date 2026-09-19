@@ -1,4 +1,4 @@
-//ui_window.c
+
 #include "ui.h"
 #include "backend_alpm.h"
 #include "icon_manager.h"
@@ -6,6 +6,7 @@
 #include <gtk/gtk.h>
 #include <string.h>
 #include <stdio.h>
+#include <unistd.h>
 
 /*
  * async_loader.c does not have a header file.
@@ -54,9 +55,6 @@ static gchar *last_operation_output = NULL;
 
 /* =========================================================
  * Window close handler
- *
- * Closing the window hides it and keeps Helwan Store
- * running in the system tray.
  * ========================================================= */
 
 static gboolean on_window_delete(
@@ -170,9 +168,24 @@ static void apply_custom_stylesheet(void)
 
     GError *error = NULL;
 
+    const char *css_path =
+        "data/style.css";
+
+    /*
+     * Source-tree path.
+     */
+    if (access("data/style.css", F_OK) != 0) {
+
+        /*
+         * Installed system path.
+         */
+        css_path =
+            "/usr/share/helwan/hel-store/style.css";
+    }
+
     gtk_css_provider_load_from_path(
         provider,
-        "data/style.css",
+        css_path,
         &error
     );
 
@@ -1300,9 +1313,6 @@ static void reload_packages(void)
     refresh_filter();
     update_action_buttons();
 
-    /*
-     * Update the system status shown inside the Store.
-     */
     ui_window_update_update_status(
         backend_get_update_count()
     );
@@ -1973,26 +1983,11 @@ void ui_window_show(
     );
 
     gtk_window_set_default_size(
-    GTK_WINDOW(main_window),
-    1100,
-    700
-);
+        GTK_WINDOW(main_window),
+        1100,
+        700
+    );
 
-/*
- * Closing the window hides it instead of terminating
- * the application. The tray icon remains active.
- */
-g_signal_connect(
-    main_window,
-    "delete-event",
-    G_CALLBACK(on_window_delete),
-    NULL
-);
-
-    /*
-     * Closing the window hides it instead of terminating
-     * the application. The tray icon remains active.
-     */
     g_signal_connect(
         main_window,
         "delete-event",
@@ -2319,7 +2314,6 @@ g_signal_connect(
         FALSE,
         1
     );
-
 
     progress_bar =
         gtk_progress_bar_new();

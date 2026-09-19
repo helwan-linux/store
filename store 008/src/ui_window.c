@@ -1190,7 +1190,7 @@ static void reload_packages(void)
                 : "Available";
 
         const gchar *status_display =
-            "OK";
+            "Installed";
 
         if (info->installed &&
             backend_package_has_update(
@@ -1206,7 +1206,7 @@ static void reload_packages(void)
         } else if (!info->installed) {
 
             status_display =
-                "--";
+                "Not Installed";
         }
 
         gtk_list_store_set(

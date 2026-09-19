@@ -1,7 +1,7 @@
 # Maintainer: Saeed Badreldin <saeed@helwanlinux.org>
 pkgname=hel-store
 pkgver=1.0.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Application store for Helwan Linux"
 arch=('x86_64')
 url="https://github.com/helwan-linux/store"

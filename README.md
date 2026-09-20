@@ -23,7 +23,7 @@ You can:
 * See whether a package is:
 
   * Installed
-  * Available
+  * Not Installed
   * Update Available
 * Show only packages that have updates.
 * Install software.

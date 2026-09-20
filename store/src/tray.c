@@ -1,3 +1,4 @@
+//tray.c
 #include "ui.h"
 #include "backend_alpm.h"
 

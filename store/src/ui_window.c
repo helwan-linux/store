@@ -1,4 +1,4 @@
-
+//ui_window.c
 #include "ui.h"
 #include "backend_alpm.h"
 #include "icon_manager.h"

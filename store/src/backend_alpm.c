@@ -1,4 +1,4 @@
-//backend_alpm.c
+
 #include "backend_alpm.h"
 
 #include <gtk/gtk.h>
@@ -187,6 +187,30 @@ int backend_init(void)
     }
 
     return 1;
+}
+
+
+/* =========================================================
+ * ALPM state refresh
+ *
+ * pacman is executed as an external process.
+ * After pacman changes /var/lib/pacman, the existing
+ * ALPM handle may still contain cached package data.
+ *
+ * Recreating the handle makes all package queries
+ * read the current local and sync database state.
+ * ========================================================= */
+
+static int backend_reload_handle(void)
+{
+    if (handle) {
+
+        alpm_release(handle);
+
+        handle = NULL;
+    }
+
+    return backend_init();
 }
 
 
@@ -1033,6 +1057,51 @@ static int backend_run_pacman(
 
         if (error)
             g_error_free(error);
+
+        g_free(last_message);
+
+        g_string_free(
+            stdout_buffer,
+            TRUE
+        );
+
+        g_string_free(
+            stderr_buffer,
+            TRUE
+        );
+
+        return 0;
+    }
+
+    /*
+     * pacman has successfully modified the package databases.
+     *
+     * The existing ALPM handle may still contain cached
+     * local/sync package information. Recreate it before
+     * returning to the UI so reload_packages() sees the
+     * new package state immediately.
+     */
+    if (!backend_reload_handle()) {
+
+        const char *message =
+            "Pacman completed successfully, but "
+            "the ALPM database state could not be reloaded.";
+
+        fprintf(
+            stderr,
+            "%s\n",
+            message
+        );
+
+        backend_report_output(
+            message
+        );
+
+        backend_report_progress(
+            message,
+            package_name,
+            0
+        );
 
         g_free(last_message);
 

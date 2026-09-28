@@ -1,7 +1,7 @@
 /* Ocean Gray Theme for GTK3 */
 
 window {
-    background-color: #2b3e50;
+    background-color: #227FC7;
     color: #000000;
     font-size: 20pt; /* حجم الخط الأساسي للنافذة ويتم توريثه للعناصر */
 }
@@ -63,7 +63,7 @@ combobox button {
 /* Tree View */
 
 treeview {
-    background-color: #1f2d3a;
+    background-color: #227F57;
     color: #000000;
     font-size: 11pt; /* يكبر حجم خط محتوى الأعمدة بالكامل ويورث للخلايا */
 }
